@@ -1,5 +1,6 @@
 package social.mic.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,13 +11,14 @@ import social.mic.service.PlayerService;
 @Controller
 public class PlayerController {
 	
+	@Autowired
 	private PlayerService playerService;
 	
-	//def find_player
+	@RequestMapping("/player")
+	public ModelAndView showPlayers(){
+		ModelAndView mvc = new ModelAndView("player", "playersList", playerService.getAllPlayer());
+		return mvc;
+	}
 	
-	//def find sessions
-//	@RequestMapping("/")
-//	public String nig(){
-//		return "index";
-	//}
+
 }
