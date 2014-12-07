@@ -8,5 +8,6 @@
         <mapping class="social.mic.model.Player" />
         <mapping class="social.mic.model.Game" />
         <mapping class="social.mic.model.System" />
+        <mapping class="social.mic.model.PlayerSystem" />
     </session-factory>         
 </hibernate-configuration>

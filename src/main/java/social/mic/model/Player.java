@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Player {
@@ -25,15 +26,18 @@ public class Player {
 	@Column(name="password")
 	private String password;
 	
-	@ManyToMany(targetEntity = System.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinTable(name="Players_system",
-				joinColumns = { @JoinColumn(name="player_id") },
-				inverseJoinColumns = { @JoinColumn(name="system_id") })
-	private List<System> playerSystems;
-
-	public List<System> playerSystems() {
-		return playerSystems;
-	}
+	@OneToMany(mappedBy = "player")
+	private List<PlayerSystem> playerSystem;
+	
+//	@ManyToMany(targetEntity = System.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+//	@JoinTable(name="Players_system",
+//				joinColumns = { @JoinColumn(name="player_id") },
+//				inverseJoinColumns = { @JoinColumn(name="system_id") })
+//	private List<System> playerSystems;
+//
+//	public List<System> playerSystems() {
+//		return playerSystems;
+//	}
 	
 
 	public int getId() {

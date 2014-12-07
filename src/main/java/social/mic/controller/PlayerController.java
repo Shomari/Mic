@@ -20,5 +20,11 @@ public class PlayerController {
 		return mvc;
 	}
 	
+	@RequestMapping("/gtag")
+	public ModelAndView showGameTags(){
+		ModelAndView mvc = new ModelAndView("gtag", "gtagList", playerService.getAllGtag());
+		return mvc;
+	}
+	
 
 }
