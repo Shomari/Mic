@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import social.mic.model.Player;
 import social.mic.service.GameService;
 
 @Controller
@@ -15,7 +16,9 @@ public class GameController {
 	
 	@RequestMapping("/")
 	public ModelAndView showGames(){
-		 ModelAndView mvc = new ModelAndView("index", "whateve", gameService.getAllGame());		 
+		 Player player = new Player();
+		 ModelAndView mvc = new ModelAndView("index", "whateve", gameService.getAllGame());
+		 mvc.addObject("player", player);
 		 return mvc;
 		
 	}
