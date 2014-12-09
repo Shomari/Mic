@@ -20,7 +20,7 @@ public class System {
 	private String name;
 	
 	@OneToMany(mappedBy = "system")
-	private List<PlayerSystem> playerSystem;
+	private List<UserSystem> userSystem;
 
 
 	public int getId() {

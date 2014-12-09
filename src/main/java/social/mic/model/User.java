@@ -15,10 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Player {
+public class User {
 	
 	@Id
-	@Column(name="player_id")
+	@Column(name="user_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name="email")
@@ -26,8 +26,8 @@ public class Player {
 	@Column(name="password")
 	private String password;
 	
-	@OneToMany(mappedBy = "player")
-	private List<PlayerSystem> playerSystem;
+	@OneToMany(mappedBy = "user")
+	private List<UserSystem> userSystem;
 	
 //	@ManyToMany(targetEntity = System.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 //	@JoinTable(name="Players_system",

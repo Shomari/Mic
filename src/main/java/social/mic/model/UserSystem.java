@@ -9,38 +9,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class PlayerSystem {
+public class UserSystem {
 		
 	@Id
-	@Column(name="playerSystem_id")
+	@Column(name="userSystem_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int playerSystem_id;	
+	private int userSystem_id;	
 
 	@ManyToOne
-	@JoinColumn(name="player_id")
-	private Player player;
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="system_id")
 	private System system;
 	
 	@Column(name="gamertag")
-	private String gamerTag;
-	
-	public int getPlayerSystem_id() {
-		return playerSystem_id;
+	private String gamertag;
+
+	public int getUserSystem_id() {
+		return userSystem_id;
 	}
 
-	public void setPlayerSystem_id(int playerSystem_id) {
-		this.playerSystem_id = playerSystem_id;
+	public void setUserSystem_id(int userSystem_id) {
+		this.userSystem_id = userSystem_id;
 	}
 
-	public Player getPlayer() {
-		return player;
+	public User getUser() {
+		return user;
 	}
 
-	public void setPlayer(Player player) {
-		this.player = player;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public System getSystem() {
@@ -51,13 +51,15 @@ public class PlayerSystem {
 		this.system = system;
 	}
 
-	public String getGamerTag() {
-		return gamerTag;
+	public String getGamertag() {
+		return gamertag;
 	}
 
-	public void setGameTag(String gameTag) {
-		this.gamerTag = gameTag;
+	public void setGamertag(String gamerTag) {
+		this.gamertag = gamerTag;
 	}
+	
+
 	
 	
 }

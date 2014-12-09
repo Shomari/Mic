@@ -11,17 +11,9 @@
 
 <h1>Welcome to Mic</h1>
 
-<a href="online">See who's online</a>
+<a href="users">Create an account</a>
 
-<form:form method="POST" action="/session" commandName="player">
-	<form:label path="email">email</form:label><br>
-  <form:input path="email" /><br><br>
-  
-  <form:label path="password">password</form:label><br>
-  <form:input path="password" />
-  <input type="submit" />
-	
-</form:form>
+
 
 
 <c:forEach items="${whateve}" var="game">
