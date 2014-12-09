@@ -12,4 +12,5 @@ public interface UserDao {
 	public User findUserByName(String username);
 	public void addUser(User user);
 
+
 }

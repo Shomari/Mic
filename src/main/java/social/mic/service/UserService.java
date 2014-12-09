@@ -10,4 +10,5 @@ public interface UserService {
 	public List<UserSystem> getAllGtag();
 	public void addUser(User user);
 	public User findUserByName(String username);
+
 }

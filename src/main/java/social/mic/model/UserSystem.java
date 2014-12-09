@@ -25,7 +25,7 @@ public class UserSystem {
 	private System system;
 	
 	@Column(name="gamertag")
-	private String gamerTag;
+	private String gamertag;
 
 	public int getUserSystem_id() {
 		return userSystem_id;
@@ -51,12 +51,12 @@ public class UserSystem {
 		this.system = system;
 	}
 
-	public String getGamerTag() {
-		return gamerTag;
+	public String getGamertag() {
+		return gamertag;
 	}
 
-	public void setGamerTag(String gamerTag) {
-		this.gamerTag = gamerTag;
+	public void setGamertag(String gamerTag) {
+		this.gamertag = gamerTag;
 	}
 	
 
