@@ -1,6 +1,6 @@
 package social.mic.model;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="game")
 public class Game {
 	
 	@Id
@@ -24,17 +26,14 @@ public class Game {
 	@Column(name="name")
 	private String name;
 	
-	@ManyToMany(targetEntity = System.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinTable(name="Systems_game",
-				joinColumns = { @JoinColumn(name="game_id") },
-				inverseJoinColumns = { @JoinColumn(name="system_id") })
-	private List<System> listOfSystems;
+	@ManyToMany(mappedBy="Game")
+	private List<System> systems;
 
-	public List<System> getListOfSystems() {
-		return listOfSystems;
+	public List<System> getSystems() {
+		return systems;
 	}
-	public void setListOfSystems(List<System> listOfSystems) {
-		this.listOfSystems = listOfSystems;
+	public void setSystems(List<System> systems) {
+		this.systems = systems;
 	}
 	public int getId() {
 		return game_id;

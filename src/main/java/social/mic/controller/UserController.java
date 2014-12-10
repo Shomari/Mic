@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import social.mic.model.Game;
 import social.mic.model.User;
 import social.mic.model.System;
 import social.mic.model.UserSystem;
@@ -52,6 +54,45 @@ public class UserController {
 		User user = new User();	
 		return new ModelAndView("CreateAccount", "user", user);		
 	}
+	
+	@RequestMapping(value="/session",method = RequestMethod.POST)
+	public ModelAndView setSession(HttpServletRequest request){
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String message = "Invalid username or password";	
+		
+		User user = userService.findUserByName(email);
+		if(user==null){
+			java.lang.System.out.println("user null");
+			return new ModelAndView("redirect:/", "message", message);
+		}
+		if(!user.getPassword().equals(password)){
+			java.lang.System.out.println(user.getPassword());
+			java.lang.System.out.println(password);
+			java.lang.System.out.println("password don't match");
+			return new ModelAndView("redirect:/", "message", message);
+		}
+		
+		List<System> systems = systemService.getAllSystems();
+		System xb1 = systems.get(0);
+		System xb360 = systems.get(1);
+		System ps4 = systems.get(2);
+		System ps3 = systems.get(3);
+		
+		System system = new System();
+		Game game = new Game();
+		
+		ModelAndView mvc = new ModelAndView("player");
+		mvc.addObject("xb1", xb1.getGame());
+		mvc.addObject("xb360", xb360.getGame());
+		mvc.addObject("ps4", ps4.getGame());
+		mvc.addObject("ps3", ps3.getGame());
+		mvc.addObject("systems", systems);
+		mvc.addObject("system", system);
+		mvc.addObject("game", game);
+		
+		return mvc;		
+	}	
 	
 	@RequestMapping(value = "/users", method=RequestMethod.POST)
 	public ModelAndView firstCreate(@ModelAttribute("user") User user, HttpSession session){
@@ -107,11 +148,6 @@ public class UserController {
 	}
 
 	
-	@RequestMapping(value="/session",method = RequestMethod.POST)
-	public ModelAndView setSession(){
-		return null;
-		
-	}
-	
+
 
 }

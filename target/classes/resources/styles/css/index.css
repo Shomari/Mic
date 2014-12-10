@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+.jumbotron{
+	/*  */
+	background-color: #24282B;
+	  -webkit-background-size: cover;
+  	  -moz-background-size: cover;
+  	  -o-background-size: cover;
+  	background-size: cover;	
+	min-height: 300px;
+}
+
+#index_header{
+	font-size: 550%;
+	color: white;
+	font-family: 'Comfortaa', cursive;
+	font-weight: bold;
+}
+
+p{
+	font-size: 300%;
+	color: white;
+	font-family: 'Comfortaa', cursive;
+}
+
+#login{
+	position: absolute;
+	bottom: 50px;
+	background-color: white;
+	padding: 50px;	
+	display: none;
+}
+
+.inputs{
+	margin-bottom: 5px;
+}
+
+

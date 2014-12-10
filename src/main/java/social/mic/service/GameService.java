@@ -3,6 +3,7 @@ package social.mic.service;
 import java.util.List;
 
 import social.mic.model.Game;
+import social.mic.model.System;
 
 
 public interface GameService {
@@ -11,5 +12,6 @@ public interface GameService {
 	public void delete(int game_id);
 	public Game getGame(int game_id);
 	public List getAllGame();
-	public List getGameSystem();
+
+
 }
