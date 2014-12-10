@@ -8,10 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form:form commandName="system">
+		<form:select path="name" items="${systems}"></form:select>
+	</form:form>
+	<form:form commandName="game">
+		<form:select path="name" items="${xb1}"></form:select>
+		<form:select path="name" items="${xb360}"></form:select>
+		<form:select path="name" items="${ps4}"></form:select>
+		<form:select path="name" items="${ps3}"></form:select>
+	</form:form>
 
 
-<c:forEach items="${playersList }" var="player">
-${player.email }<br>
-</c:forEach>
 </body>
 </html>
+

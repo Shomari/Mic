@@ -47,12 +47,8 @@ public class GameDaoImpl implements GameDao {
 		
 	}
 	
-	@Override
-	public List getGameSystem(){
-		game = getGame(1);
-		return game.getListOfSystems();	
-		
-	}
+
+
 
 
 

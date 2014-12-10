@@ -13,8 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user")
 public class User {
 	
 	@Id
@@ -27,18 +29,7 @@ public class User {
 	private String password;
 	
 	@OneToMany(mappedBy = "user")
-	private List<UserSystem> userSystem;
-	
-//	@ManyToMany(targetEntity = System.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-//	@JoinTable(name="Players_system",
-//				joinColumns = { @JoinColumn(name="player_id") },
-//				inverseJoinColumns = { @JoinColumn(name="system_id") })
-//	private List<System> playerSystems;
-//
-//	public List<System> playerSystems() {
-//		return playerSystems;
-//	}
-	
+	private List<UserSystem> userSystem;	
 
 	public int getId() {
 		return id;

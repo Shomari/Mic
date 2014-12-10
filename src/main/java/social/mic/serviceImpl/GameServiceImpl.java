@@ -8,7 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import social.mic.dao.GameDao;
 import social.mic.model.Game;
+import social.mic.model.System;
+
 import social.mic.service.GameService;
+
 @Service
 public class GameServiceImpl implements GameService {
 	
@@ -43,10 +46,10 @@ public class GameServiceImpl implements GameService {
 		return gameDao.getGame(game_id);
 	}
 
-	@Transactional
-	public List getGameSystem(){
-		return gameDao.getGameSystem();
-	}
+
+
+	
+	
 
 
 }
