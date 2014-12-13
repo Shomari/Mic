@@ -1,7 +1,9 @@
 package social.mic.controller;
 
-import java.io.Console;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,11 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import social.mic.model.Game;
-import social.mic.model.User;
 import social.mic.model.System;
+import social.mic.model.User;
 import social.mic.model.UserSystem;
 import social.mic.service.SystemService;
 import social.mic.service.UserService;
@@ -33,30 +34,11 @@ public class UserController {
 	private SystemService systemService;
 	
 	@Autowired
-	private UserSystemService userSystemService;
-	
-	@RequestMapping("/player")
-	public ModelAndView showPlayers(){
-		User user = new User();
-		ModelAndView mvc = new ModelAndView("player", "playersList", userService.getAllUser());
-		mvc.addObject("player", user);
-		return mvc;
-	}
-	
-	@RequestMapping("/gtag")
-	public ModelAndView showGameTags(){
-		ModelAndView mvc = new ModelAndView("gtag", "gtagList", userService.getAllGtag());
-		return mvc;
-	}
-	
-	@RequestMapping("/users")
-	public ModelAndView createAccount(){
-		User user = new User();	
-		return new ModelAndView("CreateAccount", "user", user);		
-	}
+	private UserSystemService userSystemService;	
 	
 	@RequestMapping(value="/session",method = RequestMethod.POST)
 	public ModelAndView setSession(HttpServletRequest request){
+		java.lang.System.out.println("/session");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String message = "Invalid username or password";	
@@ -96,6 +78,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users", method=RequestMethod.POST)
 	public ModelAndView firstCreate(@ModelAttribute("user") User user, HttpSession session){
+		java.lang.System.out.println("/users");
 		User user1 = userService.findUserByName(user.getEmail());
 		if(user1!=null){
 			String message = "This account already exsists!";
@@ -112,6 +95,7 @@ public class UserController {
 	
 	@RequestMapping(value= "/systems", method=RequestMethod.POST)
 	public ModelAndView secondCreate(HttpServletRequest request, HttpSession session){
+		java.lang.System.out.println("/systems");
 		String[] param = new String[]{"XB1", "XB360", "PS4", "PS3"};
 		List<System> list = systemService.getAllSystems();	
 		
@@ -137,9 +121,20 @@ public class UserController {
 		return new ModelAndView("index");		
 	}
 	
+	@RequestMapping("/online")
+	public void Online(HttpServletRequest request){
+		java.lang.System.out.println("in what you want");
+		//java.lang.System.out.println(request.getHeaderNames().toString());
+		java.lang.System.out.println(request.getParameter("Xbox One"));
+		
+		
+		
+	}
+	
 	
 	@RequestMapping("/login")
 	public ModelAndView loginpage(){
+		java.lang.System.out.println("/login");
 		User user = new User();
 		ModelAndView mvc = new ModelAndView("loginPage");
 		mvc.addObject("player", user);

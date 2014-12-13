@@ -8,16 +8,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form commandName="system">
-		<form:select path="name" items="${systems}"></form:select>
-	</form:form>
-	<form:form commandName="game">
-		<form:select path="name" items="${xb1}"></form:select>
-		<form:select path="name" items="${xb360}"></form:select>
-		<form:select path="name" items="${ps4}"></form:select>
-		<form:select path="name" items="${ps3}"></form:select>
-	</form:form>
 
+		<form action="online" method="POST">
+			<select name="system">
+				<c:forEach items="${systems}" var="system">
+					<option value="${system.name}">${system.name}</option>
+				</c:forEach>				
+			</select>
+			<select name="Xbox One">
+				<c:forEach items="${xb1}" var="game">
+					<option value="${game.name}">${game.name}</option>
+				</c:forEach>				
+			</select>
+			<select name="Xbox 360">
+				<c:forEach items="${xb360}" var="game">
+					<option value="${game.name}">${game.name}</option>
+				</c:forEach>				
+			</select>
+			<select name="PlayStation 4">
+				<c:forEach items="${ps4}" var="game">
+					<option value="${game.name}">${game.name}</option>
+				</c:forEach>				
+			</select>
+			<select name="PlayStation 3">
+				<c:forEach items="${ps3}" var="game">
+					<option value="${game.name}">${game.name}</option>
+				</c:forEach>				
+			</select>
+			
+			<input type="submit">
+		</form>
 
 </body>
 </html>

@@ -44,11 +44,11 @@ public class System {
 		this.Game = Game;
 	}
 
-	public int getId() {
+	public int getSystem_id() {
 		return system_id;
 	}
 
-	public void setId(int system_id) {
+	public void setSystem_id(int system_id) {
 		this.system_id = system_id;
 	}
 

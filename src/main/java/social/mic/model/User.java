@@ -30,6 +30,9 @@ public class User {
 	
 	@OneToMany(mappedBy = "user")
 	private List<UserSystem> userSystem;	
+	
+	@OneToMany(mappedBy="user")
+	private List<GameSession> session;
 
 	public int getId() {
 		return id;

@@ -1,5 +1,7 @@
 package social.mic.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +28,9 @@ public class UserSystem {
 	@ManyToOne
 	@JoinColumn(name="system_id")
 	private System system;
+	
+	@OneToMany(mappedBy = "userSystem")
+	private List<GameSession> session;
 	
 	@Column(name="gamertag")
 	private String gamertag;
