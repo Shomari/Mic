@@ -10,8 +10,9 @@
 <body>
 
 
-<c:forEach items="${hope }" var="system">
-${system.name }<br>
+<c:forEach items="${gamesessions }" var="gamesession">
+
+${gamesession.userSystem.gamertag}<br>
 </c:forEach>
 </body>
 </html>

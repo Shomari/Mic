@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 @Entity
 public class GameSession {
 	
@@ -19,13 +22,15 @@ public class GameSession {
 	private int session_id;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
-	
-	@ManyToOne
-	@JoinColumn(name="userSystem_id")	
+	@JoinColumn(name="userSystem_id")
 	private UserSystem userSystem;
 	
+	@ManyToOne
+	@JoinColumn(name="systemsGame_id")	
+	private SystemsGame systemsGame;
+	
+	
+	@Generated(GenerationTime.INSERT)	
 	@Column(name="created_at")
 	private Date created;
 
@@ -37,20 +42,20 @@ public class GameSession {
 		this.session_id = session_id;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public UserSystem getUserSystem() {
 		return userSystem;
 	}
 
 	public void setUserSystem(UserSystem userSystem) {
 		this.userSystem = userSystem;
+	}
+
+	public SystemsGame getSystemsGame() {
+		return systemsGame;
+	}
+
+	public void setSystemsGame(SystemsGame systemsGame) {
+		this.systemsGame = systemsGame;
 	}
 
 	public Date getCreated() {
@@ -60,6 +65,8 @@ public class GameSession {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+	
+
 	
 	
 	

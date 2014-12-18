@@ -16,23 +16,27 @@
 				</c:forEach>				
 			</select>
 			<select name="Xbox One">
-				<c:forEach items="${xb1}" var="game">
-					<option value="${game.name}">${game.name}</option>
+				<option value="0">Select Game</option>
+				<c:forEach items="${xb1}" var="systemGame">
+					<option value="${systemGame.systemsGame_id}">${systemGame.game.name}</option>
 				</c:forEach>				
 			</select>
 			<select name="Xbox 360">
-				<c:forEach items="${xb360}" var="game">
-					<option value="${game.name}">${game.name}</option>
+				<option value="0">Select Game</option>
+				<c:forEach items="${xb360}" var="systemGame">
+					<option value="${systemGame.systemsGame_id}">${systemGame.game.name}</option>
 				</c:forEach>				
 			</select>
 			<select name="PlayStation 4">
-				<c:forEach items="${ps4}" var="game">
-					<option value="${game.name}">${game.name}</option>
+			<option value="0">Select Game</option>
+				<c:forEach items="${ps4}" var="systemGame">
+					<option value="${systemGame.systemsGame_id}">${systemGame.game.name}</option>
 				</c:forEach>				
 			</select>
 			<select name="PlayStation 3">
-				<c:forEach items="${ps3}" var="game">
-					<option value="${game.name}">${game.name}</option>
+			<option value="0">Select Game</option>
+				<c:forEach items="${ps3}" var="systemGame">
+					<option value="${systemGame.systemsGame_id}">${systemGame.game.name}</option>
 				</c:forEach>				
 			</select>
 			

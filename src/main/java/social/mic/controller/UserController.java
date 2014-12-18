@@ -1,13 +1,12 @@
 package social.mic.controller;
 
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,16 +15,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import social.mic.model.Game;
+import social.mic.model.GameSession;
 import social.mic.model.System;
 import social.mic.model.User;
 import social.mic.model.UserSystem;
+import social.mic.service.GameSessionService;
 import social.mic.service.SystemService;
+import social.mic.service.SystemsGameService;
 import social.mic.service.UserService;
 import social.mic.service.UserSystemService;
-
+import social.mic.model.SystemsGame;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	private SessionFactory sessionFactory;
 	
 	@Autowired
 	private UserService userService;
@@ -34,11 +39,17 @@ public class UserController {
 	private SystemService systemService;
 	
 	@Autowired
-	private UserSystemService userSystemService;	
+	private UserSystemService userSystemService;
 	
+	@Autowired
+	private GameSessionService gameSessionService;
+	
+	@Autowired
+	private SystemsGameService systemsGameService;
+
+	//This is where the login page posts to
 	@RequestMapping(value="/session",method = RequestMethod.POST)
-	public ModelAndView setSession(HttpServletRequest request){
-		java.lang.System.out.println("/session");
+	public ModelAndView setSession(HttpServletRequest request, HttpSession session){
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String message = "Invalid username or password";	
@@ -72,7 +83,8 @@ public class UserController {
 		mvc.addObject("systems", systems);
 		mvc.addObject("system", system);
 		mvc.addObject("game", game);
-		
+		session.setAttribute("user", user);
+
 		return mvc;		
 	}	
 	
@@ -114,18 +126,39 @@ public class UserController {
 				}else{
 					userSystem.setGamertag(request.getParameter("PSN"));
 				}
-				userSystemService.addUserSystem(userSystem);
+
+				
+				
 			}
 		}			
 		
 		return new ModelAndView("index");		
 	}
 	
-	@RequestMapping("/online")
-	public void Online(HttpServletRequest request){
+	@RequestMapping(value="/online", method=RequestMethod.POST)
+	public ModelAndView Online(HttpServletRequest request, HttpSession session){
 		java.lang.System.out.println("in what you want");
-		//java.lang.System.out.println(request.getHeaderNames().toString());
-		java.lang.System.out.println(request.getParameter("Xbox One"));
+
+		String systemString = request.getParameter("system");
+		String systemGameString = request.getParameter(systemString); //game that the user chose
+		int systemGame = Integer.parseInt(systemGameString);
+		
+		User user = (User)session.getAttribute("user");		
+		System system = systemService.findSystemByName(systemString);
+		UserSystem userSystem = userSystemService.getUserSystem(user, system);
+		
+		SystemsGame sysgame = systemsGameService.findSystemsGameById(systemGame); 
+		java.lang.System.out.println("id is" + user.getId());		
+	
+			
+		java.lang.System.out.println(userSystem);
+		java.lang.System.out.println("it ran");
+		
+		gameSessionService.add(userSystem, sysgame);
+		List <GameSession>gamesessions = gameSessionService.getRequestedSessions(sysgame);
+		
+		ModelAndView mvc = new ModelAndView("online", "gamesessions", gamesessions);
+		return mvc;
 		
 		
 		

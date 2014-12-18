@@ -28,11 +28,17 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<UserSystem> userSystem;	
 	
-	@OneToMany(mappedBy="user")
-	private List<GameSession> session;
+	public List<UserSystem> getUserSystem() {
+		return userSystem;
+	}
+	public void setUserSystem(List<UserSystem> userSystem) {
+		this.userSystem = userSystem;
+	}
+//	@OneToMany(mappedBy="user")
+//	private List<GameSession> session;
 
 	public int getId() {
 		return id;

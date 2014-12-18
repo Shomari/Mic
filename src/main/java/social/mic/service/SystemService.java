@@ -6,5 +6,5 @@ import social.mic.model.System;
 public interface SystemService {
 	
 	public List<System> getAllSystems();
-
+	public System findSystemByName(String system);
 }

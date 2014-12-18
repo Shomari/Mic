@@ -2,18 +2,16 @@ package social.mic.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import social.mic.model.SystemsGame;
 
 @Entity
 @Table(name="system")
@@ -30,18 +28,21 @@ public class System {
 	@OneToMany(mappedBy = "system")
 	private List<UserSystem> userSystem;
 	
-	@ManyToMany(targetEntity = Game.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinTable(name="systems_game",
-				joinColumns = { @JoinColumn(name="system_id") },
-				inverseJoinColumns = { @JoinColumn(name="game_id") })
-	private List<Game> Game;
+	@OneToMany(mappedBy = "system", fetch = FetchType.EAGER)
+	private List<SystemsGame> systemGame;
 	
-	public List<Game> getGame(){
-		return Game;
+//	@ManyToMany(targetEntity = Game.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+//	@JoinTable(name="systems_game",
+//				joinColumns = { @JoinColumn(name="system_id") },
+//				inverseJoinColumns = { @JoinColumn(name="game_id") })
+//	private List<Game> Game;
+	
+	public List<SystemsGame> getGame(){
+		return systemGame;
 	}
 	
-	public void setGames(List<Game> Game) {
-		this.Game = Game;
+	public void setGames(List<SystemsGame> systemGame) {
+		this.systemGame = systemGame;
 	}
 
 	public int getSystem_id() {

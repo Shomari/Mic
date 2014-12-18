@@ -22,4 +22,9 @@ public class SystemServiceImpl implements SystemService {
 		
 	}
 
+	@Transactional
+	public System findSystemByName(String system) {
+		return systemDao.findSystemByName(system);
+	}
+
 }

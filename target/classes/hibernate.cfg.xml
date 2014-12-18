@@ -9,5 +9,7 @@
         <mapping class="social.mic.model.Game" />
         <mapping class="social.mic.model.System" />
         <mapping class="social.mic.model.UserSystem" />
+        <mapping class="social.mic.model.GameSession" />
+         <mapping class="social.mic.model.SystemsGame" />
     </session-factory>         
 </hibernate-configuration>
