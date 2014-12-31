@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+body{
+	background-color: #006666;
+}
+
+.chcekbox-inline{
+	font-family: 'Roboto', sans-serif;
+	
+}
+
+#gamertag{
+	display: none;
+}
+
+#psn{
+	display: none;
+}
+
+#account-submit{
+	display: none;
+}

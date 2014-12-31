@@ -10,72 +10,66 @@
 
 <!-- Optional: Include the jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
 <!-- Optional: Incorporate the Bootstrap JavaScript plugins -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/css/index.css">
 <script src="${pageContext.request.contextPath}/resources/styles/js/index.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Comfortaa:700' rel='stylesheet' type='text/css'>
+
+<!-- Google Web Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
+
+
+
 <title>Mic.Social</title>
 </head>
 <body>
 
-	<div class="jumbotron container-fluid">
-		<div class="row">
-			<div class="col-md-6">
-				<h1 id="index_header">Mic.Social</h1>			
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<p class="navbar-brand">Mic.Social</p>				
 			</div>
-			<div class="col-md-5">
-				<p>Find players with mics to play games with</p>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+    					<form action="join">
+        					<button class="btn btn-default navbar-btn join">Join</button>
+    					</form>
+					</li>			
+				</ul>
 			</div>
 		</div>
-		
-		<div class="row">
-			<div class="col-md-6">
-				${message }
-				Top Xbox One Games
-				<ul>
-					<li>Destiny</li>
-					<li>Call of Duty: Advanced Warfare</li>
-					<li>Halo: The Master Chief Collection</li>
-					<li>Grand Theft Auto 5</li>
-				</ul>			
+	</nav>
+
+	<div class="container homepage">
+		<div class="row text-center headline">			
+			<p>Finding teammates has never been easier</p>
+		</div>
+		<div class="row desc-login">
+			<div class="col-md-6 description">
+				<p>Connect with console gamers who want to talk while playing multiplayer games coopertivaly </p>
 			</div>
-			<div class="col-md-6">
-				Top PlayStation 4 Games
-				<ul>
-					<li>Destiny</li>
-					<li>Call of Duty: Advanced Warfare</li>
-					<li>Fifa 15</li>
-					<li>Grand Theft Auto 5</li>
-				</ul>			
-			</div>	
-			<div class="row">
-				<div class="col-md-12">
-				<button class="btn btn-lg btn-primary sign-in"><span class="glyphicon glyphicon-off"></span> </button>
-				<a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-pencil"></span> </a>
-				</div>
-			</div>	
-		</div>	
+			<div class= "col-md-4 col-md-offset-1">
+				<form class="form-signin" id="login" role="form" method="POST" action="session">	
+	  				<c:set var="hope" value="${param.message}"/>
+	  				<c:if test="${hope!=null}">
+     					<span id="error">${param.message}</span>
+    				 </c:if>
+       				 <span class="form-signin-heading text-center">Sign-in</span>
+      				  <label for="inputEmail" class="sr-only">Email address</label>
+       				  <input type="email" name="email" class="form-control inputs" placeholder="Email address" required autofocus>
+      				  <label for="inputPassword" class="sr-only">Password</label>
+       				 <input type="password" name="password" id="inputPassword" class="form-control inputs" placeholder="Password" required>
+        				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+     			 </form>			
+			</div>
+		</div>		
 	</div>
-	<div class="container">
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-	  <form class="form-signin" id="login" role="form" method="POST" action="session">	
-	  <c:set var="hope" value="${param.message}"/>
-	  <c:if test="${hope!=null}">
-     	<span id="error">${param.message}</span>
-     </c:if>
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" class="form-control inputs" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control inputs" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-      </div>
-     </div>
-     </div>
-     
+
+
 
 
 

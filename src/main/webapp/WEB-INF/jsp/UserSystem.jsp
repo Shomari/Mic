@@ -5,12 +5,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional: Include the jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- jquery validation plugin -->
+<script src=" http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+
+
+<!-- Optional: Incorporate the Bootstrap JavaScript plugins -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- CSS and Javascripts -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/css/userSystem.css">
+<script src="${pageContext.request.contextPath}/resources/styles/js/userSystem.js"></script>
+
+<!-- Google Web Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
 <title>Insert title here</title>
 </head>
 <body>
-		<h1>Create your account nigga!</h1>
+		<h1>What systems do you own</h1>
 ${message }
-	<div class="createContainer">
+	<div class="container">
 <%-- 		<form:form method="POST" action="systems" commandName="userSystem">
 			<form:checkbox path="system"  />Xbox One
 			<form:checkbox path="system"  />PlayStation 4<br>
@@ -30,24 +52,29 @@ ${message }
 		
 		
 		<form action="systems" method="POST">
-			
-			<input type="hidden" name="user" value="${user }">
-					
-			Xbox One	<input type="checkbox" name="XB1" value="true">				    	
-			Xbox 360	<input type="checkbox" name="XB360" value="true">
-			
-			PlayStation 4 <input type="checkbox" name="PS4" value="true">					  
-			PlayStation 3 <input type="checkbox" name="PS3" value="true">
-			
-			<input type="text" name="XBL">Enter Your Xbox Live Gamertag
-			<input type="text" name="PSN" value=null>Enter Your PSN ID
-			
-			
-					
-			
-			<input type="submit">
-		</form>
-		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 text-center">
+				<input type="hidden" name="user" value="${user}">							
+				<label class="checkbox-inline ms"><input id="xbone" type="checkbox" name="XB1" value="true">Xbox One</label>			    	
+				<label class="checkbox-inline ms"><input id="xbthree" type="checkbox" name="XB360" value="true">Xbox 360</label>			
+				<label class="checkbox-inline sony"><input id="psthree" type="checkbox" name="PS4" value="true">PlayStation 4</label>					  
+				<label class="checkbox-inline sony"><input id="psfour" type="checkbox" name="PS3" value="true">Playstation 3</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="form-group" id="gamertag">
+					<label>Enter your Xbox Live gamertag</label>
+					<input class="form-control" type="text" name="XBL">
+				</div>
+				<div class="form-group" id="psn">
+					<label>Enter your PSN ID</label>
+					<input class="form-control" type="text" name="PSN" value=null>
+				</div>			
+				<input type="submit" class="btn btn-default" id="account-submit">
+			</div>
+		</div>
+		</form>		
 	</div>
 		
 

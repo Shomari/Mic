@@ -1,15 +1,51 @@
 @CHARSET "UTF-8";
 
-.jumbotron{
-	/*  */
-	background-color: #24282B;
-	  -webkit-background-size: cover;
-  	  -moz-background-size: cover;
-  	  -o-background-size: cover;
-  	background-size: cover;	
-	min-height: 300px;
+
+
+body{
+	background-color: #006666;
 }
 
+.navbar{
+	background-color: #24282B;
+	border-color: #24282B;
+	border-radius: 0px;
+}
+
+.navbar-default .navbar-brand{
+	color: white;
+	font-family: 'Comfortaa', cursive;
+	font-size: 300%; 	
+	padding-left: 35%; 
+}
+
+.join{
+	margin-right: 40px;
+}
+
+.headline{
+	color: white;
+	margin-top: 40px;
+	font-size: 350%;
+	font-family: 'Open Sans', sans-serif;	
+	font-weight: 800;
+	
+}
+
+.description{
+	font-family: 'Comfortaa', cursive;	
+	color: black;
+	font-size: 250%;
+}
+
+.desc-login{
+	margin-top: 120px;
+}
+
+.form-signin-heading{
+	font-size: 250%;
+} 
+/* 
 #index_header{
 	font-size: 550%;
 	color: white;
@@ -34,5 +70,5 @@ p{
 .inputs{
 	margin-bottom: 5px;
 }
-
+ */
 

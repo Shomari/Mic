@@ -46,6 +46,15 @@ public class UserController {
 	
 	@Autowired
 	private SystemsGameService systemsGameService;
+	
+	@RequestMapping(value="/join")
+	public ModelAndView join(){
+		String message = "";
+		User user = new User();
+		ModelAndView mvc = new ModelAndView("CreateAccount", "message", message);
+		mvc.addObject("user", user);
+		return mvc;
+	}
 
 	//This is where the login page posts to
 	@RequestMapping(value="/session",method = RequestMethod.POST)
@@ -125,9 +134,7 @@ public class UserController {
 					userSystem.setGamertag(request.getParameter("XBL"));									
 				}else{
 					userSystem.setGamertag(request.getParameter("PSN"));
-				}
-
-				
+				}			
 				
 			}
 		}			
